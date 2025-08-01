@@ -33,9 +33,6 @@ def accion(lugar, accion):
     else:
         return "Lugar no válido", 404
 
-@app.route("/")
-def inicio():
-    return "Servidor de control de luces activo"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
