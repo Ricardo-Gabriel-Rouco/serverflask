@@ -3,8 +3,8 @@ import RPi.GPIO as GPIO
 
 # Pines GPIO asignados a cada ambiente
 LEDS = {
-    "habitacion1": 17,
-    "habitacion2": 18,
+    "habitacion1": 4,
+    "habitacion2": 17,
     "bano": 27,
     "cocina": 22,
 }
