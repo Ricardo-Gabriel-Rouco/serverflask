@@ -1,0 +1,102 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control de Luces</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .panel {
+      display: grid;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .control {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .on {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .off {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Control de Luces</h1>
+  <div class="panel">
+    <div class="control">
+      <span>Habitación 1</span>
+      <div>
+        <button class="on" onclick="controlar('habitacion1', 'encender')">Encender</button>
+        <button class="off" onclick="controlar('habitacion1', 'apagar')">Apagar</button>
+      </div>
+    </div>
+    <div class="control">
+      <span>Habitación 2</span>
+      <div>
+        <button class="on" onclick="controlar('habitacion2', 'encender')">Encender</button>
+        <button class="off" onclick="controlar('habitacion2', 'apagar')">Apagar</button>
+      </div>
+    </div>
+    <div class="control">
+      <span>Baño</span>
+      <div>
+        <button class="on" onclick="controlar('bano', 'encender')">Encender</button>
+        <button class="off" onclick="controlar('bano', 'apagar')">Apagar</button>
+      </div>
+    </div>
+    <div class="control">
+      <span>Cocina</span>
+      <div>
+        <button class="on" onclick="controlar('cocina', 'encender')">Encender</button>
+        <button class="off" onclick="controlar('cocina', 'apagar')">Apagar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function controlar(lugar, accion) {
+      try {
+        const response = await fetch(`/${lugar}/${accion}`, {
+          method: "POST",
+        });
+        const text = await response.text();
+        alert(text);
+      } catch (err) {
+        alert("Error al enviar la solicitud");
+      }
+    }
+  </script>
+</body>
+</html>
