@@ -6,6 +6,9 @@ app = Flask(__name__)
 # Configurar modo de numeración BCM (o BOARD si preferís)
 GPIO.setmode(GPIO.BCM)
 
+BUZZER_PIN = 18
+GPIO.setup(BUZZER_PIN, GPIO.OUT)
+
 # Diccionario con los nombres de cada lugar y su pin GPIO correspondiente
 luces = {
     "habitacion1": 17,
@@ -33,6 +36,9 @@ def accion(lugar, accion):
     else:
         return "Lugar no válido", 404
 
-
 if __name__ == "__main__":
+    GPIO.output(BUZZER_PIN, GPIO.HIGH)
+    import time
+    time.sleep(0.2)
+    GPIO.output(BUZZER_PIN, GPIO.LOW)
     app.run(host="0.0.0.0", port=5000)
