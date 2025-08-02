@@ -11,7 +11,7 @@ luces = {
     "habitacion1": 17,
     "habitacion2": 27,
     "bano": 22,
-    "cocina": 23
+    "cocina": 4
 }
 
 # Inicializar todos los pines como salida
